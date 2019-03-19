@@ -1,0 +1,24 @@
+{
+  "id": "1",
+  "nome": "Igor",
+  "cpf": "99999999999",
+  "email": "igor@hotmail.com",
+  "enderecos": [
+    {
+      "id": "1",
+      "cep": "99999999",
+      "logradouro": "Rua Tal",
+      "bairro": "Águas Claras",
+      "cidade": "Brasília",
+      "estado": "DF"
+    },
+    {
+      "id": "2",
+      "cep": "88888888",
+      "logradouro": "Rua Tal",
+      "bairro": "Eldorado",
+      "cidade": "Goiânia",
+      "estado": "GO"
+    }
+  ]
+}
