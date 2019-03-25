@@ -19,3 +19,4 @@ Criar um microsserviço utilizando arquitetura REST em qualquer linguagem de pro
 - Os modelos de dados estão localizados em: `/src/main/model`
 - Utilizado o banco MongoDB. Foi disponibilizado um docker-composer em: `/src/main/docker`
 - Teste estão localizados em: `/src/test`
+- Especificação da API com swagger (arquivo .yaml + projeto spring), localizado em: `/src/main/swagger` 

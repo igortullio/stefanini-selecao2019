@@ -1,0 +1,166 @@
+swagger: "2.0"
+info:
+  description: "Criar um microsserviço utilizando arquitetura REST em qualquer linguagem de programação e utilizando qualquer banco de dados"
+  title: "Seleção Stefanini"
+  version: "1.0.0"
+host: "localhost:8080"
+schemes:
+  - "http"
+tags:
+  - name: "pessoas"
+    description: "Tudo sobre Pessoas"
+  - name: "enderecos"
+    description: "Tudo sobre Endereços"
+paths:
+  /pessoas:
+    get:
+      tags:
+        - "pessoas"
+      summary: "Retorna todas as pessoas"
+      produces:
+        - "application/json"
+      responses:
+        '200':
+          description: Retornado com sucesso
+          schema:
+            $ref: "#/definitions/Pessoa"
+    post:
+      tags:
+        - "pessoas"
+      summary: "Adiciona uma nova pessoa"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "pessoa"
+          required: true
+          schema:
+            $ref: "#/definitions/PessoaSemEndereco"
+      responses:
+        '200':
+          description: Criado com sucesso
+  /pessoas/{id}:
+    get:
+      tags:
+        - "pessoas"
+      summary: "Retorna a pessoa especidicada pelo id"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID da Pessoa"
+          required: true
+          type: "string"
+      responses:
+        '200':
+          description: Retornado com sucesso
+          schema:
+            $ref: "#/definitions/Pessoa"
+    delete:
+      tags:
+        - "pessoas"
+      summary: "Deleta a pessoa especidicada pelo id"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID da Pessoa"
+          required: true
+          type: "string"
+      responses:
+        '200':
+          description: Excluído com sucesso
+  /enderecos:
+    get:
+      tags:
+        - "enderecos"
+      summary: "Retorna todos os endereços"
+      produces:
+        - "application/json"
+      responses:
+        '200':
+          description: Retornado com sucesso
+          schema:
+            $ref: "#/definitions/Endereco"
+    post:
+      tags:
+        - "enderecos"
+      summary: "Adiciona um novo endereco"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "endereco"
+          required: true
+          schema:
+            $ref: "#/definitions/Endereco"
+      responses:
+        '200':
+          description: Criado com sucesso
+  /enderecos/{id}:
+    get:
+      tags:
+        - "enderecos"
+      summary: "Retorna o endereço especidicada pelo id"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID do Endereço"
+          required: true
+          type: "string"
+      responses:
+        '200':
+          description: Retornado com sucesso
+          schema:
+            $ref: "#/definitions/Pessoa"
+    delete:
+      tags:
+        - "enderecos"
+      summary: "Deleta o endereço especidicado pelo id"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID do Endereço"
+          required: true
+          type: "string"
+      responses:
+        '200':
+          description: Excluído com sucesso
+definitions:
+  Pessoa:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      nome:
+        type: "string"
+      cpf:
+        type: "string"
+      email:
+        type: "string"
+      enderecos:
+        $ref: "#/definitions/Endereco"
+  PessoaSemEndereco:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      nome:
+        type: "string"
+      cpf:
+        type: "string"
+      email:
+        type: "string"
+  Endereco:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      cep:
+        type: "string"
+      logradouro:
+        type: "string"
+      bairro:
+        type: "string"
+      cidade:
+        type: "string"
+      estado:
+        type: "string"
